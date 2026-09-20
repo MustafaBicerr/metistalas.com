@@ -5,6 +5,7 @@ import sharp from "sharp";
 const ROOT = path.resolve(import.meta.dirname, "../..");
 const SOURCE_DIR = path.join(ROOT, "source-media/user-provided/logo");
 const PUBLIC_DIR = path.join(ROOT, "public/media/logo");
+const PUBLIC_ROOT = path.join(ROOT, "public");
 const APP_DIR = path.join(ROOT, "app");
 
 type LogoJob = {
@@ -32,6 +33,8 @@ const jobs: LogoJob[] = [
     maxWidth: 640,
   },
 ];
+
+const DARK = { r: 12, g: 10, b: 8, alpha: 1 };
 
 async function ensureSource(filename: string) {
   const fromPublic = path.join(PUBLIC_DIR, filename);
@@ -77,46 +80,111 @@ async function processWordmark(job: LogoJob) {
   );
 }
 
-async function processIcon() {
-  const abs = await ensureSource("metis-site-ikon.png");
-  const meta = await sharp(abs).metadata();
+async function squareMark(source: string) {
+  const meta = await sharp(source).metadata();
   if (!meta.width || !meta.height) throw new Error("Icon has no dimensions");
 
   const inset = Math.round(Math.min(meta.width, meta.height) * 0.08);
-  const cropped = sharp(abs).extract({
-    left: inset,
-    top: inset,
-    width: meta.width - inset * 2,
-    height: meta.height - inset * 2,
-  });
+  const cropped = await sharp(source)
+    .extract({
+      left: inset,
+      top: inset,
+      width: meta.width - inset * 2,
+      height: meta.height - inset * 2,
+    })
+    .toBuffer();
+
+  const croppedMeta = await sharp(cropped).metadata();
+  const width = croppedMeta.width ?? 1;
+  const height = croppedMeta.height ?? 1;
+  const canvas = Math.max(width, height);
+
+  return sharp({
+    create: {
+      width: canvas,
+      height: canvas,
+      channels: 4,
+      background: DARK,
+    },
+  })
+    .composite([
+      {
+        input: cropped,
+        left: Math.round((canvas - width) / 2),
+        top: Math.round((canvas - height) / 2),
+      },
+    ])
+    .png()
+    .toBuffer();
+}
+
+function pngToIco(images: { width: number; png: Buffer }[]) {
+  const count = images.length;
+  const header = Buffer.alloc(6);
+  header.writeUInt16LE(0, 0);
+  header.writeUInt16LE(1, 2);
+  header.writeUInt16LE(count, 4);
+
+  const entries: Buffer[] = [];
+  const payloads: Buffer[] = [];
+  let offset = 6 + 16 * count;
+
+  for (const image of images) {
+    const entry = Buffer.alloc(16);
+    entry.writeUInt8(image.width >= 256 ? 0 : image.width, 0);
+    entry.writeUInt8(image.width >= 256 ? 0 : image.width, 1);
+    entry.writeUInt8(0, 2);
+    entry.writeUInt8(0, 3);
+    entry.writeUInt16LE(1, 4);
+    entry.writeUInt16LE(32, 6);
+    entry.writeUInt32LE(image.png.length, 8);
+    entry.writeUInt32LE(offset, 12);
+    entries.push(entry);
+    payloads.push(image.png);
+    offset += image.png.length;
+  }
+
+  return Buffer.concat([header, ...entries, ...payloads]);
+}
+
+async function raster(square: Buffer, size: number) {
+  return sharp(square)
+    .resize(size, size, { fit: "contain", background: DARK })
+    .png({ compressionLevel: 9 })
+    .toBuffer();
+}
+
+async function processIcon() {
+  const abs = await ensureSource("metis-site-ikon.png");
+  const square = await squareMark(abs);
 
   await fs.mkdir(PUBLIC_DIR, { recursive: true });
-  const webpInfo = await cropped
-    .clone()
-    .resize({ width: 512, height: 512, fit: "cover" })
+  await fs.mkdir(PUBLIC_ROOT, { recursive: true });
+  await fs.mkdir(APP_DIR, { recursive: true });
+
+  const png512 = await raster(square, 512);
+  const png192 = await raster(square, 192);
+  const png180 = await raster(square, 180);
+  const png48 = await raster(square, 48);
+  const png32 = await raster(square, 32);
+
+  await sharp(png512)
     .webp({ quality: 90, alphaQuality: 100 })
     .toFile(path.join(PUBLIC_DIR, "icon.webp"));
+  await fs.writeFile(path.join(PUBLIC_DIR, "icon.png"), png512);
+  await fs.writeFile(path.join(APP_DIR, "icon.png"), png192);
+  await fs.writeFile(path.join(APP_DIR, "apple-icon.png"), png180);
+  await fs.writeFile(path.join(PUBLIC_ROOT, "apple-touch-icon.png"), png180);
 
-  await cropped
-    .clone()
-    .resize({ width: 512, height: 512, fit: "cover" })
-    .png({ compressionLevel: 9 })
-    .toFile(path.join(PUBLIC_DIR, "icon.png"));
-
-  await cropped
-    .clone()
-    .resize({ width: 32, height: 32, fit: "cover" })
-    .png({ compressionLevel: 9 })
-    .toFile(path.join(APP_DIR, "icon.png"));
-
-  await cropped
-    .clone()
-    .resize({ width: 180, height: 180, fit: "cover" })
-    .png({ compressionLevel: 9 })
-    .toFile(path.join(APP_DIR, "apple-icon.png"));
+  const ico = pngToIco([
+    { width: 32, png: png32 },
+    { width: 48, png: png48 },
+  ]);
+  await fs.writeFile(path.join(APP_DIR, "favicon.ico"), ico);
+  await fs.writeFile(path.join(PUBLIC_ROOT, "favicon.ico"), ico);
 
   console.log(
-    `icon.webp  ${webpInfo.width}×${webpInfo.height}  ${Math.round(webpInfo.size / 1024)}KB (fringe cropped)`,
+    `icon.webp  512×512  full mark on square canvas; favicon.ico 32+48`,
   );
 }
 

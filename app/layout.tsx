@@ -31,12 +31,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
   title: {
     default: site.name,
-    template: `%s | ${site.name}`,
+    template: `${site.name} | %s`,
   },
   applicationName: site.name,
+  appleWebApp: {
+    title: site.name,
+  },
   icons: {
-    icon: "/icon",
-    apple: "/apple-icon",
+    icon: [
+      { url: "/favicon.ico?v=2", sizes: "48x48" },
+      { url: "/media/logo/icon.png?v=2", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180" }],
+    shortcut: "/favicon.ico?v=2",
   },
 };
 

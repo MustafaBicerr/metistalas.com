@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: {
-      absolute: `${content.regions.title} | ${site.name}`,
+      absolute: `${site.name} | ${content.regions.title}`,
     },
     description: content.regions.intro,
     keywords: content.meta.keywords,
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: content.regions.title,
+      title: `${site.name} | ${content.regions.title}`,
       description: content.regions.intro,
       url: `${site.domain}${path}`,
       locale: resolved === "tr" ? "tr_TR" : "en_US",
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: content.regions.title,
+      title: `${site.name} | ${content.regions.title}`,
       description: content.regions.intro,
       images: ["/og.jpg"],
     },

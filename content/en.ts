@@ -3,7 +3,7 @@ import type { SiteContent } from "./types";
 export const en: SiteContent = {
   meta: {
     title:
-      "Wood Shavings Production in Elazığ | MET-İŞ TALAŞ — Poultry, Horse, Calf Bedding",
+      "MET-İŞ TALAŞ | Wood Shavings Production in Elazığ — Poultry, Horse, Calf Bedding",
     description:
       "Natural wood-shavings production and trade in Yurtbaşı, Elazığ. Bedding for poultry, horse and calf farms. Delivery to all 81 provinces, including Bingöl, Diyarbakır and Erzurum.",
     keywords:

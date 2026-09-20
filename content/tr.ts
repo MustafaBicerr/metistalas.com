@@ -2,7 +2,7 @@ import type { SiteContent } from "./types";
 
 export const tr: SiteContent = {
   meta: {
-    title: "Elazığ Talaş Üretimi | MET-İŞ TALAŞ — Tavuk, At, Buzağı Altlığı",
+    title: "MET-İŞ TALAŞ | Elazığ Talaş Üretimi — Tavuk, At, Buzağı Altlığı",
     description:
       "Elazığ Yurtbaşı’nda talaş üretimi ve talaş ticareti. Damızlık tavuk, at ve buzağı çiftlikleri için doğal ahşap altlık. 81 ile teslimat; Bingöl, Diyarbakır, Erzurum ve tüm Türkiye.",
     keywords:
