@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MET-İŞ TALAŞ
 
-## Getting Started
+Industrial marketing website for MET-İŞ TALAŞ, a wood-shavings manufacturer in Yurtbaşı, Elazığ.
 
-First, run the development server:
+Canonical site: [https://metistalas.com](https://metistalas.com). Turkish is the default locale (`/`). English lives at `/en` and is switched from the header `TR | EN` control. There is no backend: contact is telephone, WhatsApp, and Instagram only.
+
+## Stack
+
+- Next.js App Router + TypeScript
+- Tailwind CSS v4
+- next-intl (`localeDetection: false`, `localePrefix: as-needed`)
+- GSAP + ScrollTrigger (`@gsap/react`)
+- Three.js (desktop WebGL shatter only)
+- Sharp desktop/mobile WebP pipeline
+- Docker standalone + nginx reverse proxy
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Turkish: http://localhost:3000
+- English: http://localhost:3000/en
+- Service areas: http://localhost:3000/hizmet-bolgeleri · http://localhost:3000/en/service-areas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Media
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Source photographs live in `source-media/`. Website WebP files are generated into `public/media/` and described in `config/media.ts`.
 
-## Learn More
+```bash
+npm run media:inspect
+npm run media:process
+npm run media:process -- --dry-run
+npm run media:process -- --id raw-logs
+npm run media:logos
+```
 
-To learn more about Next.js, take a look at the following resources:
+Do not publish the AI business card. It is brand and contact reference only (`processing_status: "reference-only"`). Licensed mill and livestock photographs are captioned as reference imagery, never as the MET-İŞ facility.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev`
+- `npm run build`
+- `npm run start`
+- `npm run lint`
+- `npm run type-check`
+- `npm run media:inspect`
+- `npm run media:process`
+- `npm run media:logos`
 
-## Deploy on Vercel
+## Brand facts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Taken from the company card. Do not invent email, hours, certifications, capacity, or wood species.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Name: MET-İŞ TALAŞ
+- Address: Elazığ Merkez, Yurtbaşı Beldesi
+- Instagram: [instagram.com/metis_talas](https://www.instagram.com/metis_talas/)
+- Phones:
+  - Sinan Sadık Biçer — `+905061690453`
+  - H. Hüseyin Biçer — `+905323216743`
+  - Metin Yıldırım — `+905327791937`
+- 81 ile teslimat, +20 yıl tecrübe, deneyimli kadro

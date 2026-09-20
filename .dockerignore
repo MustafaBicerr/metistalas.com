@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+source-media
+media/processed
+media/manifest
+.cursor
+.vscode
+.env*
+npm-debug.log
+Dockerfile
+.dockerignore
+deploy

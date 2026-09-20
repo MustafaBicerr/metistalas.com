@@ -12,7 +12,15 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "source-media/**",
+    "media/processed/**",
   ]),
+  {
+    files: ["components/brand/BrandLogo.tsx", "components/media/ArtDirectedImage.tsx"],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

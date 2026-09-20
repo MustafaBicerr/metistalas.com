@@ -1,0 +1,42 @@
+@theme inline {
+  --color-gold: #c5a059;
+  --color-gold-light: #e8d5b0;
+  --color-gold-dark: #a0803a;
+  --color-dark: #0a0a0a;
+  --color-warm-black: #111111;
+  --color-surface: #1a1a1a;
+  --color-white: #ffffff;
+  --color-muted-bg: #f7f7f5;
+  --color-muted: #6b6561;
+  --color-on-dark: #f5f0e8;
+  --color-border: #2a2a2a;
+  --color-border-light: #e8e4de;
+
+  --font-display: var(--font-cormorant), "Iowan Old Style", serif;
+  --font-body: var(--font-inter), "Segoe UI", sans-serif;
+  --font-accent: var(--font-montserrat), "Segoe UI", sans-serif;
+
+  --text-hero: clamp(3rem, 8vw, 7rem);
+  --text-display: clamp(2.5rem, 5vw, 4.5rem);
+  --text-section: clamp(2rem, 3.5vw, 3rem);
+  --text-subsection: clamp(1.5rem, 2.5vw, 2rem);
+  --text-eyebrow: 0.75rem;
+  --text-body: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+
+  --spacing-section: clamp(4rem, 10vw, 8rem);
+  --spacing-section-sm: clamp(3rem, 6vw, 5rem);
+
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-reveal: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+}
+
+@theme inline {
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.5rem;
+  --radius-3xl: 0.5rem;
+  --radius-4xl: 0.5rem;
+}

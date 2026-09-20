@@ -1,17 +1,29 @@
 {
-  "name": "metis-scaffold",
+  "name": "metis-talas",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "type-check": "tsc --noEmit",
+    "media:inspect": "tsx scripts/media/inspect.ts",
+    "media:process": "tsx scripts/media/process.ts",
+    "media:logos": "tsx scripts/media/process-logos.ts"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@types/three": "^0.186.0",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.47.0",
     "next": "16.3.5",
+    "next-intl": "^4.14.5",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "tailwind-merge": "^3.7.0",
+    "three": "^0.186.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -20,7 +32,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }

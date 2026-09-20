@@ -1,0 +1,16 @@
+name: metistalas
+
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: metistalas_web:latest
+    container_name: metistalas_web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:18300:3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"

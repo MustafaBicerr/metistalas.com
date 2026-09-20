@@ -1,0 +1,329 @@
+{
+  "generated_at": "2026-09-20T22:09:04.816Z",
+  "processed": [
+    {
+      "id": "hero-shavings",
+      "viewport": "desktop",
+      "file": "hero-shavings-desktop.webp",
+      "public_path": "/media/desktop/hero-shavings-desktop.webp",
+      "width": 1153,
+      "height": 1441,
+      "bytes": 314590
+    },
+    {
+      "id": "hero-shavings",
+      "viewport": "mobile",
+      "file": "hero-shavings-mobile.webp",
+      "public_path": "/media/mobile/hero-shavings-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 190952
+    },
+    {
+      "id": "product-shavings-detail",
+      "viewport": "desktop",
+      "file": "product-shavings-detail-desktop.webp",
+      "public_path": "/media/desktop/product-shavings-detail-desktop.webp",
+      "width": 1153,
+      "height": 1441,
+      "bytes": 339988
+    },
+    {
+      "id": "product-shavings-detail",
+      "viewport": "mobile",
+      "file": "product-shavings-detail-mobile.webp",
+      "public_path": "/media/mobile/product-shavings-detail-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 208724
+    },
+    {
+      "id": "raw-logs",
+      "viewport": "desktop",
+      "file": "raw-logs-desktop.webp",
+      "public_path": "/media/desktop/raw-logs-desktop.webp",
+      "width": 1153,
+      "height": 1441,
+      "bytes": 370744
+    },
+    {
+      "id": "raw-logs",
+      "viewport": "mobile",
+      "file": "raw-logs-mobile.webp",
+      "public_path": "/media/mobile/raw-logs-mobile.webp",
+      "width": 778,
+      "height": 1080,
+      "bytes": 184668
+    },
+    {
+      "id": "logistics-truck",
+      "viewport": "desktop",
+      "file": "logistics-truck-desktop.webp",
+      "public_path": "/media/desktop/logistics-truck-desktop.webp",
+      "width": 1920,
+      "height": 1081,
+      "bytes": 126026
+    },
+    {
+      "id": "logistics-truck",
+      "viewport": "mobile",
+      "file": "logistics-truck-mobile.webp",
+      "public_path": "/media/mobile/logistics-truck-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 50546
+    },
+    {
+      "id": "facility-yard",
+      "viewport": "desktop",
+      "file": "facility-yard-desktop.webp",
+      "public_path": "/media/desktop/facility-yard-desktop.webp",
+      "width": 1845,
+      "height": 1153,
+      "bytes": 118500
+    },
+    {
+      "id": "facility-yard",
+      "viewport": "mobile",
+      "file": "facility-yard-mobile.webp",
+      "public_path": "/media/mobile/facility-yard-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 47148
+    },
+    {
+      "id": "production-machine",
+      "viewport": "desktop",
+      "file": "production-machine-desktop.webp",
+      "public_path": "/media/desktop/production-machine-desktop.webp",
+      "width": 1920,
+      "height": 1081,
+      "bytes": 245048
+    },
+    {
+      "id": "production-machine",
+      "viewport": "mobile",
+      "file": "production-machine-mobile.webp",
+      "public_path": "/media/mobile/production-machine-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 107030
+    },
+    {
+      "id": "wood-shavings-texture",
+      "viewport": "desktop",
+      "file": "wood-shavings-texture-desktop.webp",
+      "public_path": "/media/desktop/wood-shavings-texture-desktop.webp",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 539318
+    },
+    {
+      "id": "wood-shavings-texture",
+      "viewport": "mobile",
+      "file": "wood-shavings-texture-mobile.webp",
+      "public_path": "/media/mobile/wood-shavings-texture-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 274410
+    },
+    {
+      "id": "poultry-bedding",
+      "viewport": "desktop",
+      "file": "poultry-bedding-desktop.webp",
+      "public_path": "/media/desktop/poultry-bedding-desktop.webp",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 415968
+    },
+    {
+      "id": "poultry-bedding",
+      "viewport": "mobile",
+      "file": "poultry-bedding-mobile.webp",
+      "public_path": "/media/mobile/poultry-bedding-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 117718
+    },
+    {
+      "id": "horse-bedding",
+      "viewport": "desktop",
+      "file": "horse-bedding-desktop.webp",
+      "public_path": "/media/desktop/horse-bedding-desktop.webp",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 333046
+    },
+    {
+      "id": "horse-bedding",
+      "viewport": "mobile",
+      "file": "horse-bedding-mobile.webp",
+      "public_path": "/media/mobile/horse-bedding-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 110556
+    },
+    {
+      "id": "cattle-bedding",
+      "viewport": "desktop",
+      "file": "cattle-bedding-desktop.webp",
+      "public_path": "/media/desktop/cattle-bedding-desktop.webp",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 180300
+    },
+    {
+      "id": "cattle-bedding",
+      "viewport": "mobile",
+      "file": "cattle-bedding-mobile.webp",
+      "public_path": "/media/mobile/cattle-bedding-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 61866
+    },
+    {
+      "id": "bulk-handling",
+      "viewport": "desktop",
+      "file": "bulk-handling-desktop.webp",
+      "public_path": "/media/desktop/bulk-handling-desktop.webp",
+      "width": 1920,
+      "height": 1280,
+      "bytes": 445932
+    },
+    {
+      "id": "bulk-handling",
+      "viewport": "mobile",
+      "file": "bulk-handling-mobile.webp",
+      "public_path": "/media/mobile/bulk-handling-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 154470
+    },
+    {
+      "id": "raw-logs-detail",
+      "viewport": "desktop",
+      "file": "raw-logs-detail-desktop.webp",
+      "public_path": "/media/desktop/raw-logs-detail-desktop.webp",
+      "width": 1153,
+      "height": 769,
+      "bytes": 212416
+    },
+    {
+      "id": "raw-logs-detail",
+      "viewport": "mobile",
+      "file": "raw-logs-detail-mobile.webp",
+      "public_path": "/media/mobile/raw-logs-detail-mobile.webp",
+      "width": 864,
+      "height": 1080,
+      "bytes": 178118
+    },
+    {
+      "id": "hero-texture",
+      "viewport": "desktop",
+      "file": "hero-texture-desktop.webp",
+      "public_path": "/media/desktop/hero-texture-desktop.webp",
+      "width": 1920,
+      "height": 1081,
+      "bytes": 426020
+    },
+    {
+      "id": "hero-texture",
+      "viewport": "mobile",
+      "file": "hero-texture-mobile.webp",
+      "public_path": "/media/mobile/hero-texture-mobile.webp",
+      "width": 608,
+      "height": 1080,
+      "bytes": 199400
+    },
+    {
+      "id": "hero-poultry",
+      "viewport": "desktop",
+      "file": "hero-poultry-desktop.webp",
+      "public_path": "/media/desktop/hero-poultry-desktop.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 345608
+    },
+    {
+      "id": "hero-poultry",
+      "viewport": "mobile",
+      "file": "hero-poultry-mobile.webp",
+      "public_path": "/media/mobile/hero-poultry-mobile.webp",
+      "width": 608,
+      "height": 1080,
+      "bytes": 85242
+    },
+    {
+      "id": "hero-horse",
+      "viewport": "desktop",
+      "file": "hero-horse-desktop.webp",
+      "public_path": "/media/desktop/hero-horse-desktop.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 243404
+    },
+    {
+      "id": "hero-horse",
+      "viewport": "mobile",
+      "file": "hero-horse-mobile.webp",
+      "public_path": "/media/mobile/hero-horse-mobile.webp",
+      "width": 608,
+      "height": 1080,
+      "bytes": 81554
+    },
+    {
+      "id": "hero-cattle",
+      "viewport": "desktop",
+      "file": "hero-cattle-desktop.webp",
+      "public_path": "/media/desktop/hero-cattle-desktop.webp",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 159112
+    },
+    {
+      "id": "hero-cattle",
+      "viewport": "mobile",
+      "file": "hero-cattle-mobile.webp",
+      "public_path": "/media/mobile/hero-cattle-mobile.webp",
+      "width": 608,
+      "height": 1080,
+      "bytes": 36048
+    },
+    {
+      "id": "hero-logs",
+      "viewport": "desktop",
+      "file": "hero-logs-desktop.webp",
+      "public_path": "/media/desktop/hero-logs-desktop.webp",
+      "width": 1920,
+      "height": 1081,
+      "bytes": 382974
+    },
+    {
+      "id": "hero-logs",
+      "viewport": "mobile",
+      "file": "hero-logs-mobile.webp",
+      "public_path": "/media/mobile/hero-logs-mobile.webp",
+      "width": 608,
+      "height": 1080,
+      "bytes": 135872
+    },
+    {
+      "id": "hero-dispatch",
+      "viewport": "desktop",
+      "file": "hero-dispatch-desktop.webp",
+      "public_path": "/media/desktop/hero-dispatch-desktop.webp",
+      "width": 1920,
+      "height": 1081,
+      "bytes": 126026
+    },
+    {
+      "id": "hero-dispatch",
+      "viewport": "mobile",
+      "file": "hero-dispatch-mobile.webp",
+      "public_path": "/media/mobile/hero-dispatch-mobile.webp",
+      "width": 608,
+      "height": 1080,
+      "bytes": 35128
+    }
+  ]
+}
