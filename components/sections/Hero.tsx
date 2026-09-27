@@ -126,6 +126,9 @@ export function Hero({ content, locale, slides }: HeroProps) {
             {content.hero.title}
             <span className="mt-1 block text-gold">{content.hero.accent}</span>
           </h1>
+          <p className="mt-4 font-body text-sm tracking-wide text-on-dark/70">
+            {content.hero.alias}
+          </p>
           <p className="mt-4 max-w-lg font-body text-base text-on-dark/75 sm:mt-6 sm:text-lg">
             {content.hero.tagline}
           </p>

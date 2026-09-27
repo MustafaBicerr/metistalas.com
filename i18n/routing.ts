@@ -11,6 +11,9 @@ export const routing = defineRouting({
       tr: "/hizmet-bolgeleri",
       en: "/service-areas",
     },
+    "/blog": "/blog",
+    "/blog/[slug]": "/blog/[slug]",
+    "/talas/[slug]": "/talas/[slug]",
   },
 });
 

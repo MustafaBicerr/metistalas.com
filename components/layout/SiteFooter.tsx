@@ -2,6 +2,8 @@ import { Link } from "@/i18n/navigation";
 import type { AppLocale, SiteContent } from "@/content/types";
 import { site } from "@/config/site";
 import { headerNavigation, homeHash } from "@/config/navigation";
+import { regionLabel, regionOrder } from "@/content/seo/provinces";
+import { publicPath } from "@/lib/seo/paths";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { InstagramLink } from "@/components/brand/InstagramLink";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
@@ -28,7 +30,8 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
             <p className="mt-6 font-accent text-xs font-medium uppercase tracking-[0.2em] text-gold">
               {content.footer.tagline}
             </p>
-            <p className="mt-4 max-w-sm font-body text-sm leading-relaxed text-on-dark/60">
+            <p className="mt-4 font-body text-sm text-on-dark/80">Metiş Talaş</p>
+            <p className="mt-2 max-w-sm font-body text-sm leading-relaxed text-on-dark/60">
               {site.location.line[locale]}
             </p>
             <p className="mt-2 font-body text-sm text-on-dark/60">
@@ -62,6 +65,14 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
                   className="font-body text-sm text-on-dark/60 transition-colors hover:text-gold"
                 >
                   {content.nav.regions}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/blog"
+                  className="font-body text-sm text-on-dark/60 transition-colors hover:text-gold"
+                >
+                  {content.nav.guide}
                 </Link>
               </li>
             </ul>
@@ -108,14 +119,14 @@ export function SiteFooter({ content, locale }: SiteFooterProps) {
               {content.nav.regions}
             </h3>
             <ul className="space-y-3">
-              {content.regions.groups.map((group) => (
-                <li key={group.id}>
-                  <Link
-                    href="/hizmet-bolgeleri"
+              {regionOrder.map((id) => (
+                <li key={id}>
+                  <a
+                    href={`${publicPath(locale, "/hizmet-bolgeleri")}#${id}`}
                     className="font-body text-sm text-on-dark/60 transition-colors hover:text-gold"
                   >
-                    {group.title}
-                  </Link>
+                    {regionLabel[id][locale]}
+                  </a>
                 </li>
               ))}
             </ul>

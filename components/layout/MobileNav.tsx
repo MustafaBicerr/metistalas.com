@@ -50,6 +50,13 @@ export function MobileNav({ content, locale, open, onClose }: MobileNavProps) {
         >
           {content.nav.regions}
         </Link>
+        <Link
+          href="/blog"
+          className="min-h-11 font-display text-2xl font-light tracking-tight text-dark"
+          onClick={onClose}
+        >
+          {content.nav.guide}
+        </Link>
       </nav>
       <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border-light px-5 py-4">
         <LanguageSwitcher label={content.a11y.language} />

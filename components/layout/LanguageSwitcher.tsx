@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import type { KeyboardEvent } from "react";
+import { useParams } from "next/navigation";
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing, type AppLocale } from "@/i18n/routing";
@@ -26,10 +27,23 @@ export function LanguageSwitcher({
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
   const inactive = onDark
     ? "text-on-dark/55 hover:text-gold"
     : "text-muted hover:text-gold";
   const active = onDark ? "text-on-dark" : "text-dark";
+  const slug = typeof params.slug === "string" ? params.slug : undefined;
+  const href = useMemo(
+    () =>
+      pathname === "/talas/[slug]" && slug
+        ? ({ pathname, params: { slug } } as const)
+        : pathname === "/blog/[slug]" && slug
+          ? ({ pathname, params: { slug } } as const)
+          : pathname === "/talas/[slug]" || pathname === "/blog/[slug]"
+            ? ("/" as const)
+            : pathname,
+    [pathname, slug],
+  );
 
   useEffect(() => {
     const hash = sessionStorage.getItem(HASH_KEY);
@@ -41,17 +55,17 @@ export function LanguageSwitcher({
   useEffect(() => {
     for (const code of routing.locales) {
       if (code !== locale) {
-        router.prefetch(pathname, { locale: code });
+        router.prefetch(href, { locale: code });
       }
     }
-  }, [locale, pathname, router]);
+  }, [href, locale, router]);
 
   function switchTo(next: AppLocale) {
     if (next === locale) return;
     if (window.location.hash) {
       sessionStorage.setItem(HASH_KEY, window.location.hash);
     }
-    router.replace(pathname, { locale: next });
+    router.replace(href, { locale: next });
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {

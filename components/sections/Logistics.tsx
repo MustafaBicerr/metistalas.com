@@ -1,4 +1,5 @@
 import type { AppLocale, SiteContent } from "@/content/types";
+import { Link } from "@/i18n/navigation";
 import { media } from "@/config/media";
 import { ArtDirectedImage } from "@/components/media/ArtDirectedImage";
 import { ScaleOnScroll } from "@/components/motion/ScaleOnScroll";
@@ -36,6 +37,12 @@ export function Logistics({ content, locale }: Props) {
           <p className="mt-8 font-accent text-sm uppercase tracking-[0.22em] text-gold">
             {copy.stock}
           </p>
+          <Link
+            href="/hizmet-bolgeleri"
+            className="mt-6 inline-flex font-accent text-xs uppercase tracking-[0.2em] text-gold"
+          >
+            {content.nav.regions}
+          </Link>
         </ScrollReveal>
       </div>
     </section>

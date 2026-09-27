@@ -23,7 +23,7 @@ export function Eyebrow({ children, className, onDark = false }: EyebrowProps) {
 type HeadingProps = {
   children: React.ReactNode;
   className?: string;
-  as?: "h2" | "h3" | "h4";
+  as?: "h1" | "h2" | "h3" | "h4";
   size?: "display" | "section" | "subsection";
   onDark?: boolean;
 };

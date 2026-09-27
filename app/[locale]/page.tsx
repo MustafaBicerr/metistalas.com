@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getContent, isLocale } from "@/content";
+import { site } from "@/config/site";
 import { heroSlides } from "@/config/media";
-import { faqJsonLd, localBusinessJsonLd } from "@/lib/seo/jsonld";
+import { localBusinessJsonLd, serializeJsonLd, websiteJsonLd } from "@/lib/seo/jsonld";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { Hero } from "@/components/sections/Hero";
 import { AboutStats } from "@/components/sections/AboutStats";
 import { Product } from "@/components/sections/Product";
@@ -20,6 +23,24 @@ type Props = {
 
 export const dynamic = "force-static";
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const resolved = isLocale(locale) ? locale : "tr";
+  const content = getContent(resolved);
+  return pageMetadata({
+    locale: resolved,
+    title: content.meta.title,
+    description: content.meta.description,
+    path: "/",
+    keywords: content.meta.keywords,
+    geo: {
+      region: site.location.regionCode,
+      placename: "Yurtbaşı, Elazığ",
+      position: `${site.location.geo.latitude};${site.location.geo.longitude}`,
+    },
+  });
+}
+
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   const resolved = isLocale(locale) ? locale : "tr";
@@ -31,13 +52,13 @@ export default async function HomePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessJsonLd(resolved)),
+          __html: serializeJsonLd(localBusinessJsonLd(resolved)),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd(resolved)),
+          __html: serializeJsonLd(websiteJsonLd()),
         }}
       />
       <Hero content={content} locale={resolved} slides={heroSlides} />

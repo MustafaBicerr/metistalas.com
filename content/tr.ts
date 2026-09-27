@@ -2,11 +2,11 @@ import type { SiteContent } from "./types";
 
 export const tr: SiteContent = {
   meta: {
-    title: "MET-İŞ TALAŞ | Elazığ Talaş Üretimi — Tavuk, At, Buzağı Altlığı",
+    title: "Metiş Talaş | MET-İŞ TALAŞ — Elazığ Talaş Üretimi",
     description:
-      "Elazığ Yurtbaşı’nda talaş üretimi ve talaş ticareti. Damızlık tavuk, at ve buzağı çiftlikleri için doğal ahşap altlık. 81 ile teslimat; Bingöl, Diyarbakır, Erzurum ve tüm Türkiye.",
+      "Metiş Talaş (MET-İŞ TALAŞ), Elazığ Yurtbaşı’nda doğal ahşap talaşı üretir. Tavuk, at ve buzağı çiftlikleri için altlık. Türkiye’nin 81 iline stok teslim.",
     keywords:
-      "talaş, talaş üretimi, talaş ticareti, elazığ talaş, tavuk çiftliği altlığı, at çiftliği talaş, buzağı altlığı, bingöl talaş, diyarbakır talaş, erzurum talaş",
+      "metiş talaş, metis talaş, met-iş talaş, elazığ talaş, talaş üretimi, talaş ticareti",
   },
   a11y: {
     skip: "Ana içeriğe geç",
@@ -31,6 +31,7 @@ export const tr: SiteContent = {
     facility: "Tesis",
     contact: "İletişim",
     regions: "Bölgeler",
+    guide: "Rehber",
     menu: "Menü",
     close: "Kapat",
     pages: "Sayfa",
@@ -40,12 +41,13 @@ export const tr: SiteContent = {
     title: "MET-İŞ",
     accent: "TALAŞ",
     tagline: "Kaliteli talaş, güvenilir hizmet",
+    alias: "Metiş Talaş",
     cta: "İletişim",
   },
   about: {
     eyebrow: "Hakkımızda",
     title: "Deneyimli kadro,\nkesintisiz üretim.",
-    body: "Elazığ Yurtbaşı’nda 20 yılı aşkın talaş üretimi. Tavuk, at ve büyükbaş için.",
+    body: "Metiş Talaş, Elazığ Yurtbaşı’nda 20 yılı aşkın üretim yapar. Tavuk, at ve büyükbaş için.",
     cta: "Tesise bakın",
   },
   stats: [
@@ -200,6 +202,11 @@ export const tr: SiteContent = {
   faq: {
     title: "Sık sorulanlar",
     items: [
+      {
+        question: "Metiş Talaş ile MET-İŞ TALAŞ aynı mı?",
+        answer:
+          "Evet. Metiş Talaş, Metis Talaş ve MET-İŞ TALAŞ aynı üreticidir. Tesis Elazığ Merkez Yurtbaşı Beldesi’ndedir.",
+      },
       {
         question: "Elazığ’da talaş üretimi nerede?",
         answer:

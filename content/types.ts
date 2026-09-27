@@ -60,6 +60,7 @@ export type SiteContent = {
     facility: string;
     contact: string;
     regions: string;
+    guide: string;
     menu: string;
     close: string;
     pages: string;
@@ -69,6 +70,7 @@ export type SiteContent = {
     title: string;
     accent: string;
     tagline: string;
+    alias: string;
     cta: string;
   };
   about: {

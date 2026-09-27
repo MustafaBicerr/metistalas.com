@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getContent, isLocale } from "@/content";
-import { site } from "@/config/site";
-import { faqJsonLd, localBusinessJsonLd } from "@/lib/seo/jsonld";
+import { provincesIn, regionLabel, regionOrder, type RegionId } from "@/content/seo/provinces";
+import { faqJsonLd, localBusinessJsonLd, serializeJsonLd } from "@/lib/seo/jsonld";
+import { pageMetadata } from "@/lib/seo/metadata";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow, Heading, Body } from "@/components/ui/Typography";
@@ -14,46 +15,33 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
+const extraRegionBody: Record<"tr" | "en", Partial<Record<RegionId, string>>> = {
+  tr: {
+    akdeniz:
+      "Antalya, Adana, Mersin ve Kahramanmaraş hattına Elazığ’dan stok teslim.",
+    ege: "İzmir, Aydın, Manisa ve Muğla’daki çiftliklere ahşap altlık sevkiyatı.",
+    marmara: "İstanbul, Bursa, Balıkesir ve Trakya hattına Elazığ’dan stok teslim.",
+  },
+  en: {
+    akdeniz:
+      "Stock delivery from Elazığ toward Antalya, Adana, Mersin and Kahramanmaraş.",
+    ege: "Wood bedding shipped to farms in İzmir, Aydın, Manisa and Muğla.",
+    marmara: "Stock delivery from Elazığ toward İstanbul, Bursa, Balıkesir and Thrace.",
+  },
+};
+
 export const dynamic = "force-static";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const resolved = isLocale(locale) ? locale : "tr";
   const content = getContent(resolved);
-  const path = resolved === "tr" ? "/hizmet-bolgeleri" : "/en/service-areas";
-
-  return {
-    title: {
-      absolute: `${site.name} | ${content.regions.title}`,
-    },
+  return pageMetadata({
+    locale: resolved,
+    title: `MET-İŞ TALAŞ | ${content.regions.title}`,
     description: content.regions.intro,
-    keywords: content.meta.keywords,
-    alternates: {
-      canonical: path,
-      languages: {
-        tr: "/hizmet-bolgeleri",
-        en: "/en/service-areas",
-      },
-    },
-    openGraph: {
-      title: `${site.name} | ${content.regions.title}`,
-      description: content.regions.intro,
-      url: `${site.domain}${path}`,
-      locale: resolved === "tr" ? "tr_TR" : "en_US",
-      type: "website",
-      siteName: site.name,
-      images: [{ url: "/og.jpg", width: 1200, height: 630, alt: site.name }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${site.name} | ${content.regions.title}`,
-      description: content.regions.intro,
-      images: ["/og.jpg"],
-    },
-    other: {
-      "geo.region": site.location.regionCode,
-    },
-  };
+    path: "/hizmet-bolgeleri",
+  });
 }
 
 export default async function ServiceAreasPage({ params }: Props) {
@@ -67,47 +55,61 @@ export default async function ServiceAreasPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessJsonLd(resolved)),
+          __html: serializeJsonLd(localBusinessJsonLd(resolved)),
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqJsonLd(resolved)),
+          __html: serializeJsonLd(faqJsonLd(resolved)),
         }}
       />
       <Section tone="white">
-        <Container className="max-w-3xl">
+        <Container className="max-w-3xl pr-20 lg:pr-12">
           <Eyebrow className="mb-4">{content.regions.eyebrow}</Eyebrow>
-          <Heading className="mb-6">{content.regions.title}</Heading>
+          <Heading as="h1" className="mb-6">
+            {content.regions.title}
+          </Heading>
           <Body muted>{content.regions.intro}</Body>
+          <p className="mt-8">
+            <Link
+              href="/blog"
+              className="font-accent text-xs uppercase tracking-[0.2em] text-gold"
+            >
+              {content.nav.guide}
+            </Link>
+          </p>
         </Container>
       </Section>
-      <Section tone="muted">
-        <Container className="grid gap-12 lg:grid-cols-2">
-          {content.regions.groups.map((group) => (
-            <article key={group.id}>
-              <h2 className="font-display text-3xl font-light text-dark">
-                {group.title}
-              </h2>
+      {regionOrder.map((id, index) => {
+        const fromContent = content.regions.groups.find((group) => group.id === id);
+        const title = fromContent?.title ?? regionLabel[id][resolved];
+        const body = fromContent?.body ?? extraRegionBody[resolved][id] ?? "";
+        const cities = provincesIn(id);
+        return (
+          <Section key={id} id={id} tone={index % 2 === 0 ? "muted" : "white"}>
+            <Container className="pr-20 lg:pr-12">
+              <h2 className="font-display text-3xl font-light text-dark">{title}</h2>
               <div className="mt-4 h-px w-12 bg-gold" aria-hidden="true" />
-              <p className="mt-5 font-body text-muted">{group.body}</p>
+              <p className="mt-5 max-w-2xl font-body text-muted">{body}</p>
               <ul className="mt-6 flex flex-wrap gap-2">
-                {group.cities.map((city) => (
-                  <li
-                    key={city}
-                    className="border border-border-light px-3 py-1.5 font-accent text-[0.65rem] uppercase tracking-[0.16em] text-dark"
-                  >
-                    {city}
+                {cities.map((city) => (
+                  <li key={city.slug}>
+                    <Link
+                      href={{ pathname: "/talas/[slug]", params: { slug: city.slug } }}
+                      className="inline-flex border border-border-light px-3 py-1.5 font-accent text-[0.65rem] uppercase tracking-[0.16em] text-dark hover:border-gold hover:text-gold"
+                    >
+                      {city.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
-            </article>
-          ))}
-        </Container>
-      </Section>
+            </Container>
+          </Section>
+        );
+      })}
       <Section tone="white">
-        <Container className="max-w-3xl">
+        <Container className="max-w-3xl pr-20 lg:pr-12">
           <h2 className="font-display text-3xl font-light">{content.faq.title}</h2>
           <div className="mt-10 space-y-8">
             {content.faq.items.map((item) => (
@@ -120,11 +122,6 @@ export default async function ServiceAreasPage({ params }: Props) {
           <div className="mt-12">
             <Button href={homeHash("iletisim", resolved)}>{content.hero.cta}</Button>
           </div>
-          <p className="mt-8">
-            <Link href="/" className="font-accent text-xs uppercase tracking-[0.2em] text-gold">
-              MET-İŞ TALAŞ
-            </Link>
-          </p>
         </Container>
       </Section>
     </main>

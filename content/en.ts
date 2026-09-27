@@ -2,12 +2,11 @@ import type { SiteContent } from "./types";
 
 export const en: SiteContent = {
   meta: {
-    title:
-      "MET-İŞ TALAŞ | Wood Shavings Production in Elazığ — Poultry, Horse, Calf Bedding",
+    title: "Metiş Talaş | MET-İŞ TALAŞ — Wood Shavings in Elazığ",
     description:
-      "Natural wood-shavings production and trade in Yurtbaşı, Elazığ. Bedding for poultry, horse and calf farms. Delivery to all 81 provinces, including Bingöl, Diyarbakır and Erzurum.",
+      "Metiş Talaş (MET-İŞ TALAŞ) produces natural wood shavings in Yurtbaşı, Elazığ. Bedding for poultry, horse and calf farms. Stock delivery to all 81 provinces.",
     keywords:
-      "wood shavings, shavings production, Elazığ shavings, poultry bedding, horse bedding, calf bedding, Bingöl, Diyarbakır, Erzurum",
+      "Metiş Talaş, Metis Talaş, MET-İŞ TALAŞ, Elazığ wood shavings, poultry bedding",
   },
   a11y: {
     skip: "Skip to main content",
@@ -32,6 +31,7 @@ export const en: SiteContent = {
     facility: "Facility",
     contact: "Contact",
     regions: "Regions",
+    guide: "Guide",
     menu: "Menu",
     close: "Close",
     pages: "Pages",
@@ -41,12 +41,13 @@ export const en: SiteContent = {
     title: "MET-İŞ",
     accent: "TALAŞ",
     tagline: "Quality shavings, reliable service",
+    alias: "Metiş Talaş",
     cta: "Contact",
   },
   about: {
     eyebrow: "About",
     title: "An experienced team,\nuninterrupted production.",
-    body: "More than 20 years of shavings production in Yurtbaşı, Elazığ. For poultry, horses and cattle.",
+    body: "Metiş Talaş has produced wood shavings in Yurtbaşı, Elazığ for more than 20 years. For poultry, horses and cattle.",
     cta: "See the facility",
   },
   stats: [
@@ -201,6 +202,11 @@ export const en: SiteContent = {
   faq: {
     title: "Questions",
     items: [
+      {
+        question: "Are Metiş Talaş and MET-İŞ TALAŞ the same company?",
+        answer:
+          "Yes. Metiş Talaş, Metis Talaş and MET-İŞ TALAŞ are one producer. The mill is in Yurtbaşı, Merkez, Elazığ.",
+      },
       {
         question: "Where are the shavings produced in Elazığ?",
         answer:
